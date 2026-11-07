@@ -1,0 +1,27 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  public-bundle:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate public bundle
+        run: python scripts/validate_public_bundle.py .
+      - name: Run examples
+        run: python scripts/run_examples.py
+      - name: Run generic local runner
+        run: python scripts/run_governance_case.py --ledger examples/synthetic-ledger.csv --policy examples/synthetic-policy.md --output "$RUNNER_TEMP/review.json"
+      - name: Build deterministic ZIP
+        run: python scripts/build_skill_zip.py --output "$RUNNER_TEMP/evidence-governance.zip"
+
+

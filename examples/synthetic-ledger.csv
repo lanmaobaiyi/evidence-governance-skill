@@ -1,0 +1,4 @@
+record_id,event_type,occurred_at,location,count
+E-001,parking_conflict,2026-01-04T09:10:00Z,North Gate,2
+E-002,blocked_access,2026-01-04T09:20:00Z,North Gate,1
+E-003,parking_conflict,2026-01-05T10:00:00Z,Library Gate,1

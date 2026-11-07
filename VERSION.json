@@ -1,0 +1,8 @@
+{
+  "schema": "evidence-governance-skill/version",
+  "skill_name": "evidence-governance",
+  "version": "0.2.0",
+  "release_date": "2026-11-07",
+  "artifact_type": "docs-only-skill-with-deterministic-local-runner"
+}
+

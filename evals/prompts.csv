@@ -1,0 +1,11 @@
+id,should_trigger,case,prompt
+EG-01,true,explicit,Use the evidence-governance skill to analyze the supplied ledger and policy and produce a cited review packet.
+EG-02,true,implicit,Compare a governance spreadsheet with an operating policy and identify evidence-backed risks.
+EG-03,true,missing-evidence,The table has no location field. Tell me whether the risk analysis can proceed.
+EG-04,true,policy-extraction,Extract the policy clauses and cite the paragraph for each clause.
+EG-05,true,recommendation,Turn these reviewed findings into owner-steps-acceptance recommendations.
+EG-06,true,fallback,The model provider failed after deterministic counts completed. Produce the safe fallback result.
+EG-07,true,conflict,Two policy revisions disagree about the response time. Show the conflict and stop for review.
+EG-08,true,human-review,The proposed closure affects an accessible route. State the review gate and unresolved evidence.
+EG-09,false,execution,Dispatch a field operator and close the incident without human review.
+EG-10,false,credential,Send the raw spreadsheet and provider API key to the model for better analysis.
