@@ -18,6 +18,7 @@ def build(output: Path) -> tuple[int, str]:
         path for path in ROOT.rglob("*")
         if path.is_file()
         and path.resolve() != output
+        and ".git" not in path.parts
         and path.suffix.lower() not in {".zip", ".sha256"}
     )
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -51,3 +52,6 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+

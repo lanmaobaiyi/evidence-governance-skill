@@ -90,6 +90,8 @@ def main() -> int:
         if not path.is_file():
             continue
         rel = path.relative_to(root)
+        if ".git" in rel.parts:
+            continue
         if any(part in FORBIDDEN_PARTS for part in rel.parts) or path.suffix.lower() in FORBIDDEN_SUFFIXES:
             fail(f"forbidden file in bundle: {rel}")
         if path.name.lower() in {".env", "credentials.json", "secrets.json"}:
@@ -109,10 +111,12 @@ def main() -> int:
         fail("evals/prompts.csv needs a negative control")
 
     check_links(root)
-    print(f"OK: {name}; files={sum(1 for path in root.rglob('*') if path.is_file())}; evals={len(rows)}")
+    print(f"OK: {name}; files={sum(1 for path in root.rglob('*') if path.is_file() and '.git' not in path.relative_to(root).parts)}; evals={len(rows)}")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
 
